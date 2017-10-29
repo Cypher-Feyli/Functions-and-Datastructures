@@ -9,7 +9,7 @@ typedef struct Node  {
 
 
 nodex* createList(int x){
-    nodex * head = malloc(sizeof(nodex)); 
+    nodex * head = malloc(sizeof(nodex));
     head->data = x;
     head->next = NULL;
     head->prev = NULL;
@@ -17,8 +17,8 @@ nodex* createList(int x){
 }
 
 void addToFirst(nodex **list,int x){
-    
-    nodex * head = malloc(sizeof(nodex)); 
+
+    nodex * head = malloc(sizeof(nodex));
     head->data = x;
     head->next = *list;
     head->prev = NULL;
@@ -58,7 +58,7 @@ void removeByIndex(nodex **list,int index){
              }
          }
          temp_node = current->next;
-         
+
      //We re-link the nodes
          current->next = temp_node->next;
          temp_node->next->prev = temp_node->prev;
@@ -73,36 +73,27 @@ void printList(nodex * head) {
     printf("\n");
 
     while (current != NULL) {
-        
+
         printf("%d ", current->data);
         current = current->next;
-        
+
     }
     printf("\n");
-     
+
 }
-void freeAll(nodex *list){
-     nodex * current = list;
-     while (current != NULL) {
-         printf("test  ");
-        current = current->next;
-        if(current != NULL){
-         free(current->prev);
-        }
-    }
-     printf("s\n");
-    free(current);
-}
-void pop(nodex ** head) {
+
+int pop(nodex ** head) {
     nodex * next_node = NULL;
 
     if (*head == NULL) {
         printf("The list is empty");
+        return 0;
     }else{
         next_node = (*head)->next;
         free(*head);
         *head = next_node;
-    }    
+        return 1;
+    }
 }
 
 
@@ -113,17 +104,18 @@ int main() {
     nodex * linked_list=createList(7);
     addToFirst(&linked_list,9);
     addToFirst(&linked_list,3);
-   
+
     addToLast(&linked_list,6);
     printList(linked_list);
     removeByIndex(&linked_list,1);
     printf("\n");
     printList(linked_list);
-    freeAll(linked_list);
     printf("\n");
     printList(linked_list);
     pop(&linked_list);
     printList(linked_list);
+    pop(&linked_list);
+    pop(&linked_list);
     pop(&linked_list);
     pop(&linked_list);
     pop(&linked_list);
