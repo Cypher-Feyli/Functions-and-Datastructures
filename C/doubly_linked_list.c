@@ -96,14 +96,22 @@ int pop(nodex ** head) {
     }
 }
 
+void free_all(nodex ** head){
+    int free = 1;
+    while(free == 1){
+            free= pop(head);
+    }
+}
 
 
 
 int main() {
+
     //We create the linked list with the variable linked_list
     nodex * linked_list=createList(7);
     addToFirst(&linked_list,9);
     addToFirst(&linked_list,3);
+
 
     addToLast(&linked_list,6);
     printList(linked_list);
@@ -112,11 +120,7 @@ int main() {
     printList(linked_list);
     printf("\n");
     printList(linked_list);
-    pop(&linked_list);
+    free_all(&linked_list);
     printList(linked_list);
-    pop(&linked_list);
-    pop(&linked_list);
-    pop(&linked_list);
-    pop(&linked_list);
-    pop(&linked_list);
+
 }
