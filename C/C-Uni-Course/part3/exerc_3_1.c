@@ -42,7 +42,7 @@ void move(ROBOT* robot) {
         if(robot->xpos !=0){
             robot->xpos--;
         }else{
-            printf("the robot can't move east\n");
+            printf("the robot can't move west\n");
         }
 }
 }
@@ -99,7 +99,6 @@ int main(){
                         break;
                     }
                     i++;
-                    //choice++;
                 }
                 printf(" the x pos is%d \nthe y pos is: %d\n",rob->xpos,rob->ypos);
 
